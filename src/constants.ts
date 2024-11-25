@@ -6,7 +6,7 @@ export const scaleFactor = 4;
 
 // Dialogue data mapping in-game objects to their respective dialogue content
 // Each key represents the name of a game object, and its value contains the text to display when interacting with that object
-export const dialogueData: Record<string, any> = {
+export const dialogueData: Record<string, string> = {
   pc: `This is my PC. I work mostly in JavaScript/TypeScript these days.
     I've made a couple of games in that language. I also like Golang and Python. Anyway regardless of the language, I just like programming.
     Here is my <a href="https://github.com/jslegenddev" target="_blank">Github</a>!`, // Dialogue for interacting with the PC

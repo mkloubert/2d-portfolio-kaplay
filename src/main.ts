@@ -165,7 +165,7 @@ k.scene("main", async () => {
   k.onKeyRelease(stopAnims); // Stop animations on key release
 
   // Handle keyboard input for movement
-  k.onKeyDown((key) => {
+  k.onKeyDown((/** key */) => {
     const keyMap = [
       k.isKeyDown("right"), // Right key pressed
       k.isKeyDown("left"), // Left key pressed

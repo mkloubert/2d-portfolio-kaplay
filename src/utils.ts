@@ -8,7 +8,7 @@ import type { KaboomCtx } from "kaboom";
  */
 export function displayDialogue(
   text: string,
-  onDisplayEnd: (...args: any[]) => any
+  onDisplayEnd: (...args: unknown[]) => unknown
 ) {
   // Get references to the dialogue UI container and the dialogue text element
   const dialogueUI = document.getElementById("textbox-container")!;
