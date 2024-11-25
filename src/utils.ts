@@ -1,4 +1,5 @@
 import type { KAPLAYCtx } from "kaplay";
+import { dialogueData, getCurrentBrowserLanguage } from "./constants";
 
 /**
  * Displays a dialogue on the screen one character at a time and allows the user to close it.
@@ -56,6 +57,26 @@ export function displayDialogue(
       closeBtn.click(); // Simulate a close button click
     }
   });
+}
+
+/**
+ * Returns a key of the current language
+ *
+ * @returns The language
+ */
+export function getCurrentLang(): string {
+  return getCurrentBrowserLanguage();
+}
+
+/**
+ * Returns a translation of a dialog text by the current language
+ *
+ * @param key - The key of the dialog text
+ *
+ * @returns The translation
+ */
+export function getDialogueData(key: string): string {
+  return String(dialogueData[key]?.[getCurrentLang()] ?? key ?? "");
 }
 
 /**

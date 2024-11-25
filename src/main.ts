@@ -1,6 +1,10 @@
-import { characterOffset, dialogueData, scaleFactor } from "./constants";
+import {
+  characterOffset,
+  scaleFactor,
+  setCurrentBrowserLanguage,
+} from "./constants";
 import { k } from "./kaplayCtx";
-import { displayDialogue, setCamScale } from "./utils";
+import { displayDialogue, getDialogueData, setCamScale } from "./utils";
 
 k.loadRoot("./");
 
@@ -10,11 +14,26 @@ k.loadSprite("spritesheet", "spritesheet.png", {
   sliceY: 31, // Number of vertical slices in the sprite sheet
   anims: {
     "idle-down": 936 + characterOffset, // Idle animation facing down
-    "walk-down": { from: 936 + characterOffset, to: 939 + characterOffset, loop: true, speed: 8 }, // Walking animation facing down
+    "walk-down": {
+      from: 936 + characterOffset,
+      to: 939 + characterOffset,
+      loop: true,
+      speed: 8,
+    }, // Walking animation facing down
     "idle-side": 975 + characterOffset, // Idle animation facing sideways
-    "walk-side": { from: 975 + characterOffset, to: 978 + characterOffset, loop: true, speed: 8 }, // Walking animation facing sideways
+    "walk-side": {
+      from: 975 + characterOffset,
+      to: 978 + characterOffset,
+      loop: true,
+      speed: 8,
+    }, // Walking animation facing sideways
     "idle-up": 1014 + characterOffset, // Idle animation facing up
-    "walk-up": { from: 1014 + characterOffset, to: 1017 + characterOffset, loop: true, speed: 8 }, // Walking animation facing up
+    "walk-up": {
+      from: 1014 + characterOffset,
+      to: 1017 + characterOffset,
+      loop: true,
+      speed: 8,
+    }, // Walking animation facing up
   },
 });
 
@@ -70,7 +89,7 @@ k.scene("main", async () => {
           player.onCollide(boundary.name, () => {
             player.isInDialogue = true;
             displayDialogue(
-              dialogueData[boundary.name], // Display dialogue for this boundary
+              getDialogueData(boundary.name), // Display dialogue for this boundary
               () => (player.isInDialogue = false) // Reset dialogue state when finished
             );
           });
@@ -122,13 +141,21 @@ k.scene("main", async () => {
     const upperBound = 125;
 
     // Determine the direction based on the angle and play the corresponding animation
-    if (mouseAngle > lowerBound && mouseAngle < upperBound && player.curAnim() !== "walk-up") {
+    if (
+      mouseAngle > lowerBound &&
+      mouseAngle < upperBound &&
+      player.curAnim() !== "walk-up"
+    ) {
       player.play("walk-up");
       player.direction = "up";
       return;
     }
 
-    if (mouseAngle < -lowerBound && mouseAngle > -upperBound && player.curAnim() !== "walk-down") {
+    if (
+      mouseAngle < -lowerBound &&
+      mouseAngle > -upperBound &&
+      player.curAnim() !== "walk-down"
+    ) {
       player.play("walk-down");
       player.direction = "down";
       return;
@@ -173,6 +200,8 @@ k.scene("main", async () => {
       k.isKeyDown("left"), // Left key pressed
       k.isKeyDown("up"), // Up key pressed
       k.isKeyDown("down"), // Down key pressed
+      k.isKeyDown("e"), // 'e' key pressed
+      k.isKeyDown("d"), // 'd' key pressed
     ];
 
     let nbOfKeyPressed = 0; // Count of active keys
@@ -182,40 +211,62 @@ k.scene("main", async () => {
       }
     }
 
-    if (nbOfKeyPressed > 1) return; // Prevent diagonal movement
+    if (nbOfKeyPressed > 1) {
+      return; // Prevent diagonal movement
+    }
 
-    if (player.isInDialogue) return; // Skip movement if in dialogue
+    if (player.isInDialogue) {
+      return; // Skip movement if in dialogue
+    }
 
     if (keyMap[0]) {
       player.flipX = false;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
+      if (player.curAnim() !== "walk-side") {
+        player.play("walk-side");
+      }
       player.direction = "right";
       player.move(player.speed, 0); // Move right
-      return;
-    }
-
-    if (keyMap[1]) {
+    } else if (keyMap[1]) {
       player.flipX = true;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
+      if (player.curAnim() !== "walk-side") {
+        player.play("walk-side");
+      }
       player.direction = "left";
       player.move(-player.speed, 0); // Move left
-      return;
-    }
-
-    if (keyMap[2]) {
-      if (player.curAnim() !== "walk-up") player.play("walk-up");
+    } else if (keyMap[2]) {
+      if (player.curAnim() !== "walk-up") {
+        player.play("walk-up");
+      }
       player.direction = "up";
       player.move(0, -player.speed); // Move up
-      return;
-    }
-
-    if (keyMap[3]) {
-      if (player.curAnim() !== "walk-down") player.play("walk-down");
+    } else if (keyMap[3]) {
+      if (player.curAnim() !== "walk-down") {
+        player.play("walk-down");
+      }
       player.direction = "down";
       player.move(0, player.speed); // Move down
+    } else if (keyMap[4]) {
+      setCurrentBrowserLanguage("en");
+    } else if (keyMap[5]) {
+      setCurrentBrowserLanguage("de");
     }
   });
 });
 
-// Start the main scene
-k.go("main");
+window.addEventListener("load", () => {
+  let browserLanguage = String(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (navigator as any).language || (navigator as any).userLanguage || ""
+  )
+    .toLowerCase()
+    .trim();
+  if (browserLanguage.includes("de")) {
+    browserLanguage = "de";
+  } else {
+    browserLanguage = "en";
+  }
+  setCurrentBrowserLanguage(browserLanguage);
+
+  // Start the main scene
+  k.go("main");
+});
