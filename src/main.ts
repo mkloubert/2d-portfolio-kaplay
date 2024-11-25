@@ -22,7 +22,7 @@ k.loadSprite("spritesheet", "spritesheet.png", {
 k.loadSprite("map", "map.png");
 
 // Set the background color of the game
-k.setBackground(k.Color.fromHex("#311047"));
+k.setBackground(k.Color.fromHex("#000000"));
 
 // Define the main game scene
 k.scene("main", async () => {
