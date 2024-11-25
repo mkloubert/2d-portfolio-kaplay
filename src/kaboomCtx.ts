@@ -1,9 +1,9 @@
 import kaboom from "kaboom";
-import { scaleFactor } from "./constants";
 
+// Initialize a Kaboom instance with specific configuration options
 export const k = kaboom({
-  global: false,
-  touchToMouse: true,
-  canvas: document.getElementById("game"),
-  debug: false, // set to false once ready for production
+  global: false, // Disable global access to Kaboom functions to avoid polluting the global namespace
+  touchToMouse: true, // Enable touch inputs to simulate mouse inputs for touch devices
+  canvas: document.getElementById("game") as HTMLCanvasElement, // Specify the HTML canvas element to render the game
+  debug: false, // Enable debug mode for development; set to false for production to improve performance and security
 });
