@@ -1,6 +1,8 @@
-export function displayDialogue(text, onDisplayEnd) {
-  const dialogueUI = document.getElementById("textbox-container");
-  const dialogue = document.getElementById("dialogue");
+import { KaboomCtx } from "kaboom";
+
+export function displayDialogue(text: string, onDisplayEnd: (...args: any[]) => any) {
+  const dialogueUI = document.getElementById("textbox-container")!;
+  const dialogue = document.getElementById("dialogue")!;
 
   dialogueUI.style.display = "block";
   let index = 0;
@@ -16,7 +18,7 @@ export function displayDialogue(text, onDisplayEnd) {
     clearInterval(intervalRef);
   }, 1);
 
-  const closeBtn = document.getElementById("close");
+  const closeBtn = document.getElementById("close")!;
 
   function onCloseBtnClick() {
     onDisplayEnd();
@@ -35,7 +37,7 @@ export function displayDialogue(text, onDisplayEnd) {
   });
 }
 
-export function setCamScale(k) {
+export function setCamScale(k: KaboomCtx) {
   const resizeFactor = k.width() / k.height();
   if (resizeFactor < 1) {
     k.camScale(k.vec2(1));
