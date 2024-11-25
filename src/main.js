@@ -2,16 +2,18 @@ import { dialogueData, scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
 import { displayDialogue, setCamScale } from "./utils";
 
+const characterOffset = 16;
+
 k.loadSprite("spritesheet", "./spritesheet.png", {
   sliceX: 39,
   sliceY: 31,
   anims: {
-    "idle-down": 936,
-    "walk-down": { from: 936, to: 939, loop: true, speed: 8 },
-    "idle-side": 975,
-    "walk-side": { from: 975, to: 978, loop: true, speed: 8 },
-    "idle-up": 1014,
-    "walk-up": { from: 1014, to: 1017, loop: true, speed: 8 },
+    "idle-down": 936 + characterOffset,
+    "walk-down": { from: 936 + characterOffset, to: 939 + characterOffset, loop: true, speed: 8 },
+    "idle-side": 975 + characterOffset,
+    "walk-side": { from: 975 + characterOffset, to: 978 + characterOffset, loop: true, speed: 8 },
+    "idle-up": 1014 + characterOffset,
+    "walk-up": { from: 1014 + characterOffset, to: 1017 + characterOffset, loop: true, speed: 8 },
   },
 });
 
