@@ -1,4 +1,4 @@
-import type { KaboomCtx } from "kaboom";
+import type { KAPLAYCtx } from "kaplay";
 
 /**
  * Displays a dialogue on the screen one character at a time and allows the user to close it.
@@ -61,9 +61,9 @@ export function displayDialogue(
 /**
  * Sets the camera scale dynamically based on the aspect ratio of the screen.
  *
- * @param k - The Kaboom context, which provides utility functions and settings.
+ * @param k - The KAPLAY context, which provides utility functions and settings.
  */
-export function setCamScale(k: KaboomCtx) {
+export function setCamScale(k: KAPLAYCtx) {
   // Calculate the screen's aspect ratio (width divided by height)
   const resizeFactor = k.width() / k.height();
 

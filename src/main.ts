@@ -1,9 +1,11 @@
 import { characterOffset, dialogueData, scaleFactor } from "./constants";
-import { k } from "./kaboomCtx";
+import { k } from "./kaplayCtx";
 import { displayDialogue, setCamScale } from "./utils";
 
+k.loadRoot("./");
+
 // Load the sprite sheet for the player and define animations
-k.loadSprite("spritesheet", "./spritesheet.png", {
+k.loadSprite("spritesheet", "spritesheet.png", {
   sliceX: 39, // Number of horizontal slices in the sprite sheet
   sliceY: 31, // Number of vertical slices in the sprite sheet
   anims: {
@@ -17,7 +19,7 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
 });
 
 // Load the map sprite
-k.loadSprite("map", "./map.png");
+k.loadSprite("map", "map.png");
 
 // Set the background color of the game
 k.setBackground(k.Color.fromHex("#311047"));
@@ -25,7 +27,7 @@ k.setBackground(k.Color.fromHex("#311047"));
 // Define the main game scene
 k.scene("main", async () => {
   // Load map data from a JSON file
-  const mapData = await (await fetch("./map.json")).json();
+  const mapData = await (await fetch("map.json")).json();
   const layers = mapData.layers;
 
   // Add the map sprite to the scene
@@ -103,7 +105,7 @@ k.scene("main", async () => {
 
   // Center the camera on the player with an offset
   k.onUpdate(() => {
-    k.camPos(player.worldPos().x, player.worldPos().y - 100);
+    k.camPos(player.worldPos()!.x, player.worldPos()!.y - 100);
   });
 
   // Handle mouse clicks for player movement
