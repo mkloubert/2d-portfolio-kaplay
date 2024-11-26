@@ -17,9 +17,9 @@ Ich habe viele coole Web- und native Apps in dieser Sprache entwickelt. Ich lieb
 Hier ist mein <a href="https://github.com/mkloubert" target="_blank">GitHub</a>!
 Fun Fact: Ich benutze meine Maus mit der linken Hand, bin aber Rechtshaender, weil ich gerne beide Gehirnhaelften benutze.`,
   },
-  "gitfather-avatar": {
-    en: `This is my avatar. I made it with <a href="https://www.midjourney.com/" target="_blank">Midjouney</a> from a photo of mine. It looks like <a href="https://en.wikipedia.org/wiki/Vito_Corleone" target="_blank">Don Vito Corleone</a> from <a href="https://en.wikipedia.org/wiki/The_Godfather" target="_blank">The Godfather</a> because my nick nowadays is <a href="https://kloubert.blog/" target="_blank">GitFather</a>. Btw: I love AI!`,
-    de: `Das ist mein Avatar. Ich habe ihn mit <a href="https://www.midjourney.com/" target="_blank">Midjourney</a> aus einem Foto von mir erstellt. Er sieht aus wie <a href="https://en.wikipedia.org/wiki/Vito_Corleone" target="_blank">Don Vito Corleone</a> aus <a href="https://en.wikipedia.org/wiki/The_Godfather" target="_blank">Der Pate</a>, weil mein Spitzname heutzutage <a href="https://kloubert.blog/" target="_blank">GitFather</a> ist. Uebrigens: Ich liebe KI!`,
+  "gina": {
+    en: `This was my dog. She died a few years ago and I have <a href="https://github.com/mkloubert/gina" target="_blank">created a gallery</a> in her memory.`,
+    de: `Dies war mein Hund. Sie ist vor wenigen Jahren gestorben und ich habe ihr <a href="https://github.com/mkloubert/gina" target="_blank">eine Gallerie</a> erstellt, um sie in Erinnerung zu halten.`,
   },
   "sofa-table": {
     en: `That's my sofa. I like to relax here and watch YouTube, Disney+ & Co. 

@@ -5,6 +5,7 @@ import {
 } from "./constants";
 import { k } from "./kaplayCtx";
 import { displayDialogue, getDialogueData, setCamScale } from "./utils";
+import mapInfo from "./map.json";
 
 k.loadRoot("./");
 
@@ -45,8 +46,8 @@ k.setBackground(k.Color.fromHex("#000000"));
 
 // Define the main game scene
 k.scene("main", async () => {
-  // Load map data from a JSON file
-  const mapData = await (await fetch("map.json")).json();
+  // Load map data from a JSON file and clone
+  const mapData = JSON.parse(JSON.stringify(mapInfo));
   const layers = mapData.layers;
 
   // Add the map sprite to the scene
