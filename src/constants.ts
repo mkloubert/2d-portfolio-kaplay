@@ -18,8 +18,8 @@ Hier ist mein <a href="https://github.com/mkloubert" target="_blank">GitHub</a>!
 Fun Fact: Ich benutze meine Maus mit der linken Hand, bin aber Rechtshaender, weil ich gerne beide Gehirnhaelften benutze.`,
   },
   "gina": {
-    en: `This was my dog. She died a few years ago and I have <a href="https://github.com/mkloubert/gina" target="_blank">created a gallery</a> in her memory.`,
-    de: `Dies war mein Hund. Sie ist vor wenigen Jahren gestorben und ich habe ihr <a href="https://github.com/mkloubert/gina" target="_blank">eine Gallerie</a> erstellt, um sie in Erinnerung zu halten.`,
+    en: `This was Gina, my dog. She died a few years ago and I have <a href="https://github.com/mkloubert/gina" target="_blank">created a gallery</a> in her memory.`,
+    de: `Dies war mein Hund Gina. Sie ist vor wenigen Jahren gestorben und ich habe ihr <a href="https://github.com/mkloubert/gina" target="_blank">eine Gallerie</a> erstellt, um sie in Erinnerung zu halten.`,
   },
   "sofa-table": {
     en: `That's my sofa. I like to relax here and watch YouTube, Disney+ & Co. 
