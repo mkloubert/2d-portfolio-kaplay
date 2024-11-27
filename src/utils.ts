@@ -97,3 +97,21 @@ export function setCamScale(k: KAPLAYCtx) {
     k.camScale(k.vec2(1.5));
   }
 }
+
+/**
+ * Starts a player dialog
+ *
+ * @param player - The player object
+ * @param dialogKey - The key inside the dialog translation data
+ */
+export function startPlayerDialog(
+  player: { isInDialogue: boolean },
+  dialogKey: string
+) {
+  player.isInDialogue = true;
+
+  displayDialogue(
+    getDialogueData(dialogKey), // Display dialogue for this boundary
+    () => (player.isInDialogue = false) // Reset dialogue state when finished
+  );
+}

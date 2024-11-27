@@ -4,7 +4,7 @@ import {
   setCurrentBrowserLanguage,
 } from "./constants";
 import { k } from "./kaplayCtx";
-import { displayDialogue, getDialogueData, setCamScale } from "./utils";
+import { setCamScale, startPlayerDialog } from "./utils";
 import mapInfo from "./map.json";
 
 k.loadRoot("./");
@@ -88,11 +88,7 @@ k.scene("main", async () => {
         // Set up collision detection for dialogue triggers
         if (boundary.name) {
           player.onCollide(boundary.name, () => {
-            player.isInDialogue = true;
-            displayDialogue(
-              getDialogueData(boundary.name), // Display dialogue for this boundary
-              () => (player.isInDialogue = false) // Reset dialogue state when finished
-            );
+            startPlayerDialog(player, boundary.name);
           });
         }
       }
@@ -252,6 +248,10 @@ k.scene("main", async () => {
       setCurrentBrowserLanguage("de");
     }
   });
+
+  setTimeout(() => {
+    startPlayerDialog(player, "welcome");
+  }, 1000);
 });
 
 window.addEventListener("load", () => {
